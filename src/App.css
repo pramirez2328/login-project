@@ -28,10 +28,26 @@
   #container {
     grid-template-columns: 1fr;
     grid-template-rows: 0.5fr 1fr 1fr;
-    /* align-items: flex-end; */
     grid-template-areas:
       'left'
       'right'
       'footer';
+    gap: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .card {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: fit-content;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
   }
 }
