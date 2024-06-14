@@ -1,42 +1,37 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.left-section {
+  grid-area: left;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.right-section {
+  grid-area: right;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.footer {
+  grid-area: footer;
+}
+
+#container {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.8fr 0.2fr;
+  gap: 2rem;
+  align-items: center;
+  grid-template-areas:
+    'left right'
+    'footer footer';
+}
+
+@media screen and (max-width: 768px) {
+  #container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr;
+    /* align-items: flex-end; */
+    grid-template-areas:
+      'left'
+      'right'
+      'footer';
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
