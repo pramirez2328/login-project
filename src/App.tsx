@@ -1,15 +1,15 @@
-import TitleSection from './components/section/TitleSection';
-import Login from './components/login/Login';
-import Footer from './components/footer/Footer';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import MyFeed from './MyFeed';
 
 import './App.css';
-
 function App() {
   return (
-    <div id='container'>
-      <TitleSection />
-      <Login />
-      <Footer />
+    <div>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/myfeed' element={<MyFeed />} />
+      </Routes>
     </div>
   );
 }
