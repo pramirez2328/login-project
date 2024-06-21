@@ -5,7 +5,7 @@ function MyFeed() {
   };
 
   const cardStyle = {
-    padding: '10px',
+    padding: '2em',
     backgroundColor: '#fff',
     border: '1px solid #ddd',
     borderRadius: '5px',
