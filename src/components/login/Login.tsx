@@ -1,4 +1,5 @@
 import './Login.css';
+import { Link } from 'react-router-dom';
 function Login() {
   return (
     <div className='right-section'>
@@ -11,7 +12,9 @@ function Login() {
         </form>
         <p className='forgot-password'>Forgot password?</p>
         <hr />
-        <button className='create-account'>Create New Account</button>
+        <Link to='/new-account'>
+          <button className='create-account'>Create New Account</button>
+        </Link>
       </div>
     </div>
   );
