@@ -1,6 +1,7 @@
+import './NewAccount.css';
 function NewAccount() {
   return (
-    <div>
+    <div id='new-account'>
       <div className='card'>
         <p className='card-title'>Create a new account</p>
         <form className='form'>
