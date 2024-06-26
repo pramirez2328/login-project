@@ -5,3 +5,20 @@
   height: 100vh;
   background-color: #f5f5f5;
 }
+
+.new-user-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.create-account-button {
+  margin-top: 20px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
