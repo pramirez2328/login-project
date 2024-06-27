@@ -1,12 +1,22 @@
 import { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './NewAccount.css';
 function NewAccount() {
   const [newUser, setNewUser] = useState({ name: '', lastName: '', email: '', password: '' });
   const [confirmPassword, setConfirmPassword] = useState('');
-  const handleNewUser = (e) => {
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleNewUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(newUser);
+    console.log(confirmPassword);
+    if (newUser.password === confirmPassword) {
+      navigate('/');
+    } else {
+      setError("Password doesn't  match!");
+      console.log('Passwords do not match!');
+    }
   };
   return (
     <div id='new-account'>
@@ -48,6 +58,7 @@ function NewAccount() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
+          <p className='error-message'>{error}</p>
 
           <button className='create-account-button'>Create Account</button>
         </form>
