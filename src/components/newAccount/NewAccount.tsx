@@ -25,7 +25,7 @@ const handleValidation = (obj: NewUser, confirmPassword: string): string => {
   } else if (password !== confirmPassword) {
     return 'Passwords do not match!';
   } else if (password.length < 8) {
-    return 'Password must be at least 8 characters';
+    return 'Password must be at least 10 characters';
   } else if (!/\d/.test(password)) {
     return 'Password must contain at least one number';
   } else if (!/[a-zA-Z]/.test(password)) {
