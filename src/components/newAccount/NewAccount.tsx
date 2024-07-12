@@ -11,32 +11,49 @@ interface NewUser {
 
 const handleValidation = (obj: NewUser, confirmPassword: string): string => {
   const { name, lastName, email, password } = obj;
-  if (name === '' || lastName === '' || email === '' || password === '') {
+
+  if (!name || !lastName || !email || !password) {
     return 'Please fill all the fields';
-  } else if (name.length < 3 || lastName.length < 3) {
-    return 'Name and last name must be at least 3 characters';
-  } else if (
-    email.indexOf('@') === -1 ||
-    email.indexOf('.') === -1 ||
-    email.indexOf('@') > email.indexOf('.') ||
-    !email.includes('com')
-  ) {
-    return 'Invalid email';
-  } else if (password !== confirmPassword) {
-    return 'Passwords do not match!';
-  } else if (password.length < 8) {
-    return 'Password must be at least 10 characters';
-  } else if (!/\d/.test(password)) {
-    return 'Password must contain at least one number';
-  } else if (!/[a-zA-Z]/.test(password)) {
-    return 'Password must contain at least one lowercase or uppercase letter';
-  } else if (!/[!@#$%^&*]/.test(password)) {
-    return 'Password must contain at least one special character';
-  } else if (!/^[a-zA-Z0-9!@#$%^&*]+$/.test(password)) {
-    return 'Password must contain only letters, numbers and special characters';
-  } else {
-    return 'valid';
   }
+
+  if (name.length < 3 || lastName.length < 3) {
+    return 'Name and last name must be at least 3 characters';
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return 'Invalid email';
+  }
+
+  if (password !== confirmPassword) {
+    return 'Passwords do not match!';
+  }
+
+  if (password.length < 8) {
+    return 'Password must be at least 8 characters';
+  }
+
+  const hasNumber = /\d/;
+  if (!hasNumber.test(password)) {
+    return 'Password must contain at least one number';
+  }
+
+  const hasLetter = /[a-zA-Z]/;
+  if (!hasLetter.test(password)) {
+    return 'Password must contain at least one letter';
+  }
+
+  const hasSpecialChar = /[!@#$%^&*]/;
+  if (!hasSpecialChar.test(password)) {
+    return 'Password must contain at least one special character';
+  }
+
+  const validPasswordChars = /^[a-zA-Z0-9!@#$%^&*]+$/;
+  if (!validPasswordChars.test(password)) {
+    return 'Password must contain only letters, numbers, and special characters';
+  }
+
+  return 'valid';
 };
 
 function NewAccount() {
