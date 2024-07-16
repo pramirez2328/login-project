@@ -10,9 +10,11 @@ function Login() {
           <input className='password' type='password' placeholder='Password' />
           <button className='login-button'>Login</button>
         </form>
-        <p className='forgot-password'>Forgot password?</p>
+        <Link to='/forgot_password'>
+          <p className='forgot-password'>Forgot password?</p>
+        </Link>
         <hr />
-        <Link to='/new-account'>
+        <Link to='/new_account'>
           <button className='create-account'>Create New Account</button>
         </Link>
       </div>
