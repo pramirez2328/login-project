@@ -1,21 +1,24 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PopUp from '../popup/PopUp';
 import './ForgotPassword.css';
 
 function ForgotPassword() {
   const [email, setEmail] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
   const navigate = useNavigate();
 
   const handleEmailValidation = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert('Please enter a valid email address');
-    } else {
-      alert('If the email is valid, a reset link will be sent to your email');
-      navigate('/');
+    if (emailRegex.test(email)) {
+      setValidEmail(true);
     }
   };
+
+  if (validEmail) {
+    return <PopUp message='A password reset link has been sent to your email' />;
+  }
 
   return (
     <div className='forgot-password-container'>
