@@ -6,7 +6,7 @@ import './ForgotPassword.css';
 function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleEmailValidation = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -15,10 +15,6 @@ function ForgotPassword() {
       setValidEmail(true);
     }
   };
-
-  if (validEmail) {
-    return <PopUp message='A password reset link has been sent to your email' />;
-  }
 
   return (
     <div className='forgot-password-container'>
@@ -35,6 +31,7 @@ function ForgotPassword() {
           <button className='reset-password login-button'>Send reset link</button>
         </form>
       </div>
+      {validEmail && <PopUp message='A password reset link has been sent to your email' />}
     </div>
   );
 }
